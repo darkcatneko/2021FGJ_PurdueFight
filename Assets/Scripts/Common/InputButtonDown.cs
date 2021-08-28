@@ -115,13 +115,13 @@ public static class InputButtonDown {
     public static bool Act(int player) {
         switch (player) {
         case 1:
-            return IsButtonDown(actButton1);
+            return IsButtonDown(actButton1, true);
         case 2:
-            return IsButtonDown(actButton2);
+            return IsButtonDown(actButton2, true);
         case 3:
-            return IsButtonDown(actButton3);
+            return IsButtonDown(actButton3, true);
         case 4:
-            return IsButtonDown(actButton4);
+            return IsButtonDown(actButton4, true);
         default:
             Debug.LogError("Only 1~4 players, not include " + player + "player!");
             return false;
