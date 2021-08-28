@@ -96,5 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeOneTwoThree: 3
   timeWood: 2
-  timeAtteck: 1
+  timeAtteck: 2
   timeCD: 1
+  seOneTwoThree: {fileID: 8300000, guid: 82bf0e171b2a645468b37e8608e4e3e0, type: 3}
+  seWood: {fileID: 8300000, guid: a05d0db8a56c447d6b4b0b729611f416, type: 3}
+  seAttack: {fileID: 0}

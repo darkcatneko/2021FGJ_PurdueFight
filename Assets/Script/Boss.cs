@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boss : MonoBehaviour {
     public float timeOneTwoThree;
@@ -8,7 +6,12 @@ public class Boss : MonoBehaviour {
     public float timeAtteck;
     public float timeCD;
 
+    public AudioClip seOneTwoThree;
+    public AudioClip seWood;
+    public AudioClip seAttack;
+
     SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
 
     enum State {
         Normal,
@@ -23,51 +26,68 @@ public class Boss : MonoBehaviour {
 
     void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
         switch (state) {
         case State.Normal:
             if (Input.GetMouseButtonDown(0)) {
-                spriteRenderer.color = Color.yellow;
-                time = Time.time;
-                state = State.OneTwoThree;
+                audioSource.PlayOneShot(seOneTwoThree);
+                Next(State.OneTwoThree);
             }
             break;
         case State.OneTwoThree:
             if (Input.GetMouseButtonUp(0)) {
-                spriteRenderer.color = Color.blue;
-                time = Time.time;
-                state = State.CD;
+                audioSource.Stop();
+                Next(State.CD);
             } else if (Time.time >= time + timeOneTwoThree) {
-                spriteRenderer.color = new Color(1f, 0.5f, 0f);
-                time = Time.time;
-                state = State.Wood;
+                Next(State.Wood);
             }
             break;
         case State.Wood:
             if (Input.GetMouseButtonUp(0)) {
-                spriteRenderer.color = Color.blue;
-                time = Time.time;
-                state = State.CD;
+                audioSource.PlayOneShot(seWood);
+                Next(State.Attack);
             } else if (Time.time >= time + timeWood) {
-                spriteRenderer.color = Color.red;
-                state = State.Attack;
+                Next(State.CD);
             }
             break;
         case State.Attack:
             if (Time.time >= time + timeAtteck) {
-                spriteRenderer.color = Color.blue;
-                time = Time.time;
-                state = State.CD;
+                Next(State.CD);
             }
             break;
         case State.CD:
             if (Time.time >= time + timeCD) {
-                spriteRenderer.color = Color.white;
-                state = State.Normal;
+                Next(State.Normal);
             }
             break;
         }
+    }
+
+    void Next(State next) {
+        time = Time.time;
+        
+        // 實際上是換圖、先用顏色代替
+        switch (next) {
+        case State.Normal:
+            spriteRenderer.color = Color.white;
+            break;
+        case State.OneTwoThree:
+            spriteRenderer.color = Color.yellow;
+            break;
+        case State.Wood:
+            spriteRenderer.color = new Color(1f, 0.5f, 0f);
+            break;
+        case State.Attack:
+            spriteRenderer.color = Color.red;
+            break;
+        case State.CD:
+            spriteRenderer.color = Color.blue;
+            break;
+        }
+
+        state = next;
     }
 }
