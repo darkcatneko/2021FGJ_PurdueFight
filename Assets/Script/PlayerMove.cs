@@ -4,14 +4,43 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] GameObject Player1;
-    int TableCount = 1;
+    class Player
+    {
+        public GameObject playerObject;
+        int TableCount;
+        bool Ifgethit;
+        bool IfEating;
+        float Hunger;
+        
+        public void ChangeTable()
+        {
+            switch (TableCount)
+            {
+                case 1:
+                    this.playerObject.transform.position = new Vector3(-4.2f, 3.5f, 0f);
+                    break;
+                case 2:
+                    this.playerObject.transform.position = new Vector3(-4.2f, -1.2f, 0f);
+                    break;
+                case 3:
+                    this.playerObject.transform.position = new Vector3(4.2f, -1.2f, 0f);
+                    break;
+                case 4:
+                    this.playerObject.transform.position = new Vector3(4.2f, 3.5f, 0f);
+                    break;
+            }
+
+        }
+    }
+    [SerializeField] GameObject Player1; int TableCount = 1;
     void Start()
     {
-        
+        Player player1 = new Player();
+        player1.playerObject = Player1;
     }
-
     
+    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -21,7 +50,7 @@ public class PlayerMove : MonoBehaviour
             {
                 TableCount = 1;
             }
-            ChangeTable();
+            
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -30,25 +59,8 @@ public class PlayerMove : MonoBehaviour
             {
                 TableCount = 4;
             }
-            ChangeTable();
+            
         }
     }
-    void ChangeTable()
-    {
-        switch (TableCount) 
-        {  case 1:
-                Player1.transform.position = new Vector3(-4.2f, 3.5f, 0f);
-            break;
-            case 2:
-                Player1.transform.position = new Vector3(-4.2f, -1.2f, 0f);
-                break;
-            case 3:
-                Player1.transform.position = new Vector3(4.2f, -1.2f, 0f);
-                break;
-            case 4:
-                Player1.transform.position = new Vector3(4.2f, 3.5f, 0f);
-                break;
-        }
-           
-    }
+    
 }
