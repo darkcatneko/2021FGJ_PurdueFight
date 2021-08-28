@@ -9,6 +9,10 @@ public class PlayerGen : MonoBehaviour
     {
         Player one =  Instantiate(Resources.Load<Player>("Player"));
         one.SetPlayer(1);
+        Food Ham1 = Instantiate(Resources.Load<Food>("Bigmac"));
+        Ham1.SetID(5);
+
+
     }
 
     
