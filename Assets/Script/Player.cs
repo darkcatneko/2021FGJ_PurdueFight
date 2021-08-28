@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
         public int TableCount;
         public bool Ifgethit;
         public bool IfEating;
-        public bool IfOut; 
-        float Hunger;
+        public bool IfPass; 
+        public float Hunger;
         
         public void SetPlayer(int Id)
         {
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
         if (InputButtonDown.Act(PlayerID))
         {
             IfEating = true;
+            Hunger += Time.deltaTime;
             foreach (var item in myObjArray)
             {
                 if ((int)dir == item.GetComponent<Food>().tableID)
@@ -89,7 +90,11 @@ public class Player : MonoBehaviour
    
     void gameCheck()
     {
-        if (IfOut == true)
+        if (Ifgethit == true)
+        {
+
+        }
+        if (Hunger>100)
         {
 
         }
