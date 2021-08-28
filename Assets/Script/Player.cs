@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
     Dir dir = (Dir.Up | Dir.Left);
         public int PlayerID;
         public int TableCount;
-        bool Ifgethit;
-        bool IfEating;
+        public bool Ifgethit;
+        public bool IfEating;
+        public bool IfOut; 
         float Hunger;
         
         public void SetPlayer(int Id)
@@ -56,11 +57,11 @@ public class Player : MonoBehaviour
         }
         if (Dir.Right == (dir & Dir.Right))
         {
-            transform.SetLocalPositioinX(4.2f);
+            transform.SetLocalPositioinX(0.6f+1.5f*PlayerID);
         }
         else
         {
-            transform.SetLocalPositioinX(-4.2f);
+            transform.SetLocalPositioinX(-7.6f+1.5f*PlayerID);
         }
         //Debug.Log((int)dir);
     }
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
         myObjArray = GameObject.FindGameObjectsWithTag("Food");
         if (InputButtonDown.Act(PlayerID))
         {
+            IfEating = true;
             foreach (var item in myObjArray)
             {
                 if ((int)dir == item.GetComponent<Food>().tableID)
@@ -79,7 +81,19 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            IfEating = false;
+        }
     }
+   
+    void gameCheck()
+    {
+        if (IfOut == true)
+        {
+
+        }
+    }    
     private void Update()
     {
         ChangeTable();
