@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         }
         if (Hunger>100)
         {
-            SceneManager.LoadScene("Human Win");
+            SceneManager.LoadScene("Goast Win");
         }
     }    
     private void Update()
