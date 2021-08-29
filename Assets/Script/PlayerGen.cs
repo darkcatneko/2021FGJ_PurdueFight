@@ -11,7 +11,7 @@ public class PlayerGen : MonoBehaviour
     void Start()
     {
         for (int i = 0; i < PLAYER_NUM; i++) {
-            players[i] = Instantiate(Resources.Load<Player>("Player"));
+            players[i] = Instantiate(Resources.Load<Player>("Player" + (i + 1)));
             players[i].SetPlayer(i + 1);
         }
 
