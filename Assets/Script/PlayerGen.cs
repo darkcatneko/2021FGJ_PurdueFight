@@ -21,7 +21,7 @@ public class PlayerGen : MonoBehaviour
             }
                      
         }
-        PlayerChoose.playerchoose = new int[4];
+        //PlayerChoose.playerchoose = new int[4];
 
         Food Set1 = Instantiate(Resources.Load<Food>("Foods"));
         Set1.SetID(5);

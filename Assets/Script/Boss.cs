@@ -67,6 +67,7 @@ public class Boss : MonoBehaviour {
             }
             break;
         case State.Attack:
+            Attack();
             if (Time.time >= time + timeAtteck) {
                 Next(State.CD);
             }
@@ -106,11 +107,11 @@ public class Boss : MonoBehaviour {
 
     void Attack() {
         for (int i = 0; i < PlayerGen.PLAYER_NUM; i++) {
+            print(i + " " + PlayerChoose.playerchoose[i]);
             if (PlayerChoose.playerchoose[i] == i + 1) {
                 if (playerGen.players[i].IfEating)
                     playerGen.players[i].Ifgethit = true;
             }
         }
-        Next(State.CD);
     }
 }
