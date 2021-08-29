@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerGen : MonoBehaviour
 {
+
     const int PLAYER_NUM = 4;
 
     public Player[] players = new Player[PLAYER_NUM];
-
     void Start()
         {
         for (int i = 0; i < PLAYER_NUM; i++)
@@ -34,6 +35,14 @@ public class PlayerGen : MonoBehaviour
     
     void Update()
     {
+        GameObject[] myObjArray;
+        myObjArray = GameObject.FindGameObjectsWithTag("Player");
+        
+            if (myObjArray[0].GetComponent<Player>().Ifgethit==true&& myObjArray[1].GetComponent<Player>().Ifgethit == true&& myObjArray[2].GetComponent<Player>().Ifgethit == true&& myObjArray[3].GetComponent<Player>().Ifgethit == true)
+            {
+            SceneManager.LoadScene("Goast Win");
+            }
+            
         
     }
 }

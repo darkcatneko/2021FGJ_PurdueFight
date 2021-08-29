@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class Player : MonoBehaviour
         public bool IfEating;
         public bool IfPass; 
         public float Hunger;
-        
         public void SetPlayer(int Id)
         {
         PlayerID = Id;
@@ -87,17 +87,18 @@ public class Player : MonoBehaviour
     {
         if (Ifgethit == true)
         {
-
+            controller.SetTrigger("Damage");
         }
         if (Hunger>100)
         {
-
+            SceneManager.LoadScene("Human Win");
         }
     }    
     private void Update()
     {
         ChangeTable();
         EatFood();
+        gameCheck();
     }
 }
 
