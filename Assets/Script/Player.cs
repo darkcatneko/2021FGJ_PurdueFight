@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
         }
         if (Hunger>60)
         {
+
             SceneManager.LoadScene("Ghost Win");
         }
     }    
