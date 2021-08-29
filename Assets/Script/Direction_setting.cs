@@ -8,5 +8,9 @@ public enum Dir
         Left = 4,
         Right = 8,
 
+        LU = Left | Up,
+        LD = Left | Down,
+        RU = Right | Up,
+        RD = Right | Down
     }
 

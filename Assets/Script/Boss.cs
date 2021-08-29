@@ -29,11 +29,13 @@ public class Boss : MonoBehaviour {
     float time = 0f;
 
     void Awake() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < SPEEL_NUM; i++) {
             spellPoses[i] = transform.Find("SpellPos" + i);
             spells[i] = Instantiate(Resources.Load<Spell>("Spell"), spellPoses[i]);
+            if (i >= 2)
+                spells[i].EndUse();
         }
     }
 
@@ -55,6 +57,7 @@ public class Boss : MonoBehaviour {
             break;
         case State.Wood:
             if (Input.GetMouseButtonUp(0)) {
+                audioSource.Stop();
                 audioSource.PlayOneShot(seWood);
                 Next(State.Attack);
             } else if (Time.time >= time + timeWood) {
