@@ -12,50 +12,52 @@ public class PlayerChoose : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            playerchoose[0] = 1;
-            player1On.SetActive(true);
-            player1Off.SetActive(false);
+            if (playerchoose[0] == 0) {
+                playerchoose[0] = 1;
+                player1On.SetActive(true);
+                player1Off.SetActive(false);
+            } else  {
+                playerchoose[0] = 0;
+                player1Off.SetActive(true);
+                player1On.SetActive(false);
+            }
         }
-        else
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
-            player1Off.SetActive(true);
-            player1On.SetActive(false);
+            if (playerchoose[1] == 0) {
+                playerchoose[1] = 2;
+                player2On.SetActive(true);
+                player2Off.SetActive(false);
+            } else {
+                playerchoose[1] = 0;
+                player2Off.SetActive(true);
+                player2On.SetActive(false);
+            }
         }
-        if (Input.GetKey(KeyCode.RightControl))
+        if (Input.GetKeyDown(KeyCode.O)) {
+            if (playerchoose[2] == 0) {
+                playerchoose[2] = 3;
+                player3On.SetActive(true);
+                player3Off.SetActive(false);
+            } else {
+                playerchoose[2] = 0;
+                player3Off.SetActive(true);
+                player3On.SetActive(false);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad4))
         {
-            playerchoose[1] = 2;
-            player2On.SetActive(true);
-            player2Off.SetActive(false);
+            if (playerchoose[3] == 0) {
+                playerchoose[3] = 4;
+                player4On.SetActive(true);
+                player4Off.SetActive(false);
+            } else {
+                playerchoose[3] = 0;
+                player4Off.SetActive(true);
+                player4On.SetActive(false);
+            }
         }
-        else
-        {
-            player2Off.SetActive(true);
-            player2On.SetActive(false);
-        }
-        if (Input.GetKey(KeyCode.O))
-        {
-            playerchoose[2] = 3;
-            player3On.SetActive(true);
-            player3Off.SetActive(false);
-        }
-        else
-        {
-            player3Off.SetActive(true);
-            player3On.SetActive(false);
-        }
-        if (Input.GetKey(KeyCode.Keypad4))
-        {
-            playerchoose[3] = 4;
-            player4On.SetActive(true);
-            player4Off.SetActive(false);
-        }
-        else
-        {
-            player4Off.SetActive(true);
-            player4On.SetActive(false);
-        }
-
     }
 }
