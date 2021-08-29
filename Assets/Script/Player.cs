@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     }
 
     Dir dir = (Dir.Up | Dir.Left);
+     [SerializeField]Animator controller;
         public int PlayerID;
         public int TableCount;
         public bool Ifgethit;
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
         if (InputButtonDown.Act(PlayerID))
         {
             IfEating = true;
+            controller.SetBool("Eating", true);
             Hunger += Time.deltaTime;
             foreach (var item in myObjArray)
             {
@@ -84,6 +86,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            controller.SetBool("Eating", false);
             IfEating = false;
         }
     }

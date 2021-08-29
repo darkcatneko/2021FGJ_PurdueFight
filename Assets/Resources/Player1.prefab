@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7554468166921191418}
   - component: {fileID: 7554468166921191397}
   - component: {fileID: 5255115434486985722}
+  - component: {fileID: -2889444839635630351}
   m_Layer: 0
-  m_Name: Player (4)
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,9 +96,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54046b4b8bdd36b4d96f44c2a3a9738e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: -2889444839635630351}
   PlayerID: 0
   TableCount: 0
   Ifgethit: 0
   IfEating: 0
   IfPass: 0
   Hunger: 0
+--- !u!95 &-2889444839635630351
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554468166921191396}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ba1554468a144444b72d8e5ec2ae5cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
