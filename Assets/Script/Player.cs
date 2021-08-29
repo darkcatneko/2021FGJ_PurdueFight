@@ -90,9 +90,9 @@ public class Player : MonoBehaviour
             controller.SetTrigger("Damage");
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-        if (Hunger>100)
+        if (Hunger>60)
         {
-            SceneManager.LoadScene("Human Win");
+            SceneManager.LoadScene("Ghost Win");
         }
     }    
     private void Update()

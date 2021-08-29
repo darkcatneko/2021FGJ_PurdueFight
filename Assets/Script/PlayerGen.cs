@@ -43,6 +43,6 @@ public class PlayerGen : MonoBehaviour
                 hitCount++;
         }
         if (hitCount >= myObjArray.Length)
-            SceneManager.LoadScene("Goast Win");
+            SceneManager.LoadScene("Human Win");
     }
 }
