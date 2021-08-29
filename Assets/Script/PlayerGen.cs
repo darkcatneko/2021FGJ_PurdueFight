@@ -12,11 +12,7 @@ public class PlayerGen : MonoBehaviour
         {
         for (int i = 0; i < PLAYER_NUM; i++)
         {
-<<<<<<< HEAD
-            if (PlayerChoose.playerchoose[i]==i)
-=======
             if (PlayerChoose.playerchoose[i]==i+1)
->>>>>>> 427cd7067323ec51772279b7805e46371c20d97f
             {
                 players[i] = Instantiate(Resources.Load<Player>("Player" + (i + 1)));
                 players[i].SetPlayer(i + 1);    
