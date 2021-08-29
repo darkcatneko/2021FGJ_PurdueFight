@@ -5,15 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [System.Flags]
-    enum Dir 
-    {
-    Up =1,
-    Down = 2,
-    Left = 4,
-    Right = 8,
-
-    }
+    
 
     Dir dir = (Dir.Up | Dir.Left);
      [SerializeField]Animator controller;
