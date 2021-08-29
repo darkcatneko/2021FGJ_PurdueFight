@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 public class Boss : MonoBehaviour {
+    const int SPEEL_NUM = 3;
+
     public float timeOneTwoThree;
     public float timeWood;
     public float timeAtteck;
@@ -12,6 +14,8 @@ public class Boss : MonoBehaviour {
 
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
+    Transform[] spellPoses = new Transform[SPEEL_NUM];
+    Spell[] spells = new Spell[SPEEL_NUM];
 
     enum State {
         Normal,
@@ -27,6 +31,10 @@ public class Boss : MonoBehaviour {
     void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        for (int i = 0; i < SPEEL_NUM; i++) {
+            spellPoses[i] = transform.Find("SpellPos" + i);
+            spells[i] = Instantiate(Resources.Load<Spell>("Spell"), spellPoses[i]);
+        }
     }
 
     void Update() {
