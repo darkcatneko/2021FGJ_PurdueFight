@@ -35,14 +35,14 @@ public class PlayerGen : MonoBehaviour
     
     void Update()
     {
-        GameObject[] myObjArray;
-        myObjArray = GameObject.FindGameObjectsWithTag("Player");
-        
-            if (myObjArray[0].GetComponent<Player>().Ifgethit==true&& myObjArray[1].GetComponent<Player>().Ifgethit == true&& myObjArray[2].GetComponent<Player>().Ifgethit == true&& myObjArray[3].GetComponent<Player>().Ifgethit == true)
-            {
+        GameObject[] myObjArray = GameObject.FindGameObjectsWithTag("Player");
+        int hitCount = 0;
+
+        for (int i = 0; i < myObjArray.Length; i++) {
+            if (myObjArray[i].GetComponent<Player>().Ifgethit)
+                hitCount++;
+        }
+        if (hitCount >= myObjArray.Length)
             SceneManager.LoadScene("Goast Win");
-            }
-            
-        
     }
 }
