@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class PlayerGen : MonoBehaviour
 {
-    
+    const int PLAYER_NUM = 4;
+
+    public Player[] players = new Player[PLAYER_NUM];
+
     void Start()
-    {
-        Player one =  Instantiate(Resources.Load<Player>("Player"));
-        one.SetPlayer(1);
-        Player two = Instantiate(Resources.Load<Player>("Player"));
-        two.SetPlayer(2);
-        Player three = Instantiate(Resources.Load<Player>("Player"));
-        three.SetPlayer(3);
-        Player four = Instantiate(Resources.Load<Player>("Player"));
-        four.SetPlayer(4);
-        Food Ham1 = Instantiate(Resources.Load<Food>("Bigmac"));
-        Ham1.SetID(5);
+        {
+        for (int i = 0; i < PLAYER_NUM; i++)
+        {
+            if (PlayerChoose.playerchoose[i-1]==i)
+            {
+                players[i] = Instantiate(Resources.Load<Player>("Player" + (i + 1)));
+                players[i].SetPlayer(i + 1);    
+            }
+                     
+        }
+        PlayerChoose.playerchoose = new int[4];
 
-
+        Food Set1 = Instantiate(Resources.Load<Food>("Foods"));
+        Set1.SetID(5);
+        Food Set2 = Instantiate(Resources.Load<Food>("Foods1"));
+        Set2.SetID(9);
+        Food Set3 = Instantiate(Resources.Load<Food>("Foods2"));
+        Set3.SetID(6);
+        Food Set4 = Instantiate(Resources.Load<Food>("Foods3"));
+        Set4.SetID(10);
     }
 
     

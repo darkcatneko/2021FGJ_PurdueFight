@@ -5,17 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [System.Flags]
-    enum Dir 
-    {
-    Up =1,
-    Down = 2,
-    Left = 4,
-    Right = 8,
-
-    }
+    
 
     Dir dir = (Dir.Up | Dir.Left);
+     [SerializeField]Animator controller;
         public int PlayerID;
         public int TableCount;
         public bool Ifgethit;
@@ -57,11 +50,11 @@ public class Player : MonoBehaviour
         }
         if (Dir.Right == (dir & Dir.Right))
         {
-            transform.SetLocalPositioinX(0.6f+1.5f*PlayerID);
+            transform.SetLocalPositioinX(1.8f+0.7f*PlayerID);
         }
         else
         {
-            transform.SetLocalPositioinX(-7.6f+1.5f*PlayerID);
+            transform.SetLocalPositioinX(-6.4f+0.7f*PlayerID);
         }
         //Debug.Log((int)dir);
     }
@@ -73,6 +66,7 @@ public class Player : MonoBehaviour
         if (InputButtonDown.Act(PlayerID))
         {
             IfEating = true;
+            controller.SetBool("Eating", true);
             Hunger += Time.deltaTime;
             foreach (var item in myObjArray)
             {
@@ -84,6 +78,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            controller.SetBool("Eating", false);
             IfEating = false;
         }
     }
