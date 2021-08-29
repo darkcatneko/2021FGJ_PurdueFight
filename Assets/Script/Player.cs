@@ -57,11 +57,11 @@ public class Player : MonoBehaviour
         }
         if (Dir.Right == (dir & Dir.Right))
         {
-            transform.SetLocalPositioinX(0.6f+1.5f*PlayerID);
+            transform.SetLocalPositioinX(1.8f+0.7f*PlayerID);
         }
         else
         {
-            transform.SetLocalPositioinX(-7.6f+1.5f*PlayerID);
+            transform.SetLocalPositioinX(-6.4f+0.7f*PlayerID);
         }
         //Debug.Log((int)dir);
     }
