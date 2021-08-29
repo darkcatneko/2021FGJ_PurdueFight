@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
         if (Ifgethit == true)
         {
             controller.SetTrigger("Damage");
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
         if (Hunger>100)
         {
