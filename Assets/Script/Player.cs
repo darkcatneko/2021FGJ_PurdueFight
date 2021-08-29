@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         }
         if (Hunger>60)
         {
-
+            PlayerChoose.playerchoose = new int[4];
             SceneManager.LoadScene("Ghost Win");
         }
     }    
