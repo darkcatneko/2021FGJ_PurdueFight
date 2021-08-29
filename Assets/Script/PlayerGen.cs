@@ -9,11 +9,17 @@ public class PlayerGen : MonoBehaviour
     public Player[] players = new Player[PLAYER_NUM];
 
     void Start()
-    {
-        for (int i = 0; i < PLAYER_NUM; i++) {
-            players[i] = Instantiate(Resources.Load<Player>("Player" + (i + 1)));
-            players[i].SetPlayer(i + 1);
+        {
+        for (int i = 0; i < PLAYER_NUM; i++)
+        {
+            if (PlayerChoose.playerchoose[i-1]==i)
+            {
+                players[i] = Instantiate(Resources.Load<Player>("Player" + (i + 1)));
+                players[i].SetPlayer(i + 1);    
+            }
+                     
         }
+        PlayerChoose.playerchoose = new int[4];
 
         Food Set1 = Instantiate(Resources.Load<Food>("Foods"));
         Set1.SetID(5);
