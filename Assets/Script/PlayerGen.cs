@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGen : MonoBehaviour
 {
-    const int PLAYER_NUM = 4;
+    public const int PLAYER_NUM = 4;
 
     public Player[] players = new Player[PLAYER_NUM];
 

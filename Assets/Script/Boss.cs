@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour {
     public AudioClip seWood;
     public AudioClip seAttack;
 
+    PlayerGen playerGen;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
     Transform[] spellPoses = new Transform[SPEEL_NUM];
@@ -29,6 +30,7 @@ public class Boss : MonoBehaviour {
     float time = 0f;
 
     void Awake() {
+        playerGen = transform.parent.GetComponent<PlayerGen>();
         spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < SPEEL_NUM; i++) {
@@ -100,5 +102,15 @@ public class Boss : MonoBehaviour {
         }
 
         state = next;
+    }
+
+    void Attack() {
+        for (int i = 0; i < PlayerGen.PLAYER_NUM; i++) {
+            if (PlayerChoose.playerchoose[i] == i + 1) {
+                if (playerGen.players[i].IfEating)
+                    playerGen.players[i].Ifgethit = true;
+            }
+        }
+        Next(State.CD);
     }
 }
