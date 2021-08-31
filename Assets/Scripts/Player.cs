@@ -5,21 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public int PlayerID;
+    public int TableCount;
+    public bool isGetHit;
+    public bool isEatting;
+    public float Hunger;
 
-    
-
+    Animator animator;
     Dir dir = (Dir.Up | Dir.Left);
-     [SerializeField]Animator controller;
-        public int PlayerID;
-        public int TableCount;
-        public bool Ifgethit;
-        public bool IfEating;
-        public bool IfPass; 
-        public float Hunger;
-        public void SetPlayer(int Id)
-        {
+
+    public void SetPlayer(int Id)
+    {
         PlayerID = Id;
-        }
+
+        animator = GetComponent<Animator>();
+    }
+
     public void ChangeTable()
     {
         //Debug.Log((int)dir);
@@ -65,8 +66,8 @@ public class Player : MonoBehaviour
         myObjArray = GameObject.FindGameObjectsWithTag("Food");
         if (InputButtonDown.Act(PlayerID))
         {
-            IfEating = true;
-            controller.SetBool("Eating", true);
+            isEatting = true;
+            animator.SetBool("Eating", true);
             Hunger += Time.deltaTime;
             foreach (var item in myObjArray)
             {
@@ -78,16 +79,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-            controller.SetBool("Eating", false);
-            IfEating = false;
+            animator.SetBool("Eating", false);
+            isEatting = false;
         }
     }
    
     void gameCheck()
     {
-        if (Ifgethit == true)
+        if (isGetHit == true)
         {
-            controller.SetTrigger("Damage");
+            animator.SetTrigger("Damage");
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
         if (Hunger>60)
@@ -96,7 +97,8 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Ghost Win");
         }
     }    
-    private void Update()
+
+    void Update()
     {
         ChangeTable();
         EatFood();

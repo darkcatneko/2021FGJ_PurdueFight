@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerGen : MonoBehaviour
+public class Game : MonoBehaviour
 {
-
     public const int PLAYER_NUM = 4;
 
     public Player[] players = new Player[PLAYER_NUM];
@@ -38,7 +37,7 @@ public class PlayerGen : MonoBehaviour
         int hitCount = 0;
 
         for (int i = 0; i < myObjArray.Length; i++) {
-            if (myObjArray[i].GetComponent<Player>().Ifgethit)
+            if (myObjArray[i].GetComponent<Player>().isGetHit)
                 hitCount++;
         }
         if (hitCount >= myObjArray.Length) {

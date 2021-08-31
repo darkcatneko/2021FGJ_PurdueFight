@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerChoose : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerChoose : MonoBehaviour
     [SerializeField] GameObject player2On;[SerializeField] GameObject player2Off;
     [SerializeField] GameObject player3On;[SerializeField] GameObject player3Off;
     [SerializeField] GameObject player4On;[SerializeField] GameObject player4Off;
+    [SerializeField] Button fightButton;
 
     void Update()
     {
@@ -59,5 +61,11 @@ public class PlayerChoose : MonoBehaviour
                 player4On.SetActive(false);
             }
         }
+
+        int chooseCount = 0;
+        for (int i = 0; i < 4; i++) {
+            chooseCount += playerchoose[i];
+        }
+        fightButton.interactable = (chooseCount == 0) ? false : true;
     }
 }
